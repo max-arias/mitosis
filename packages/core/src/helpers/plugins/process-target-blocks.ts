@@ -1,3 +1,4 @@
+import { PLUGIN_SORT_ORDER } from '../../constants/plugin-sort-order';
 import {
   getIdFromMatch,
   USE_TARGET_MAGIC_REGEX,
@@ -25,6 +26,8 @@ const getBlockForTarget = ({
  * Processes `useTarget()` blocks for a given target.
  */
 export const processTargetBlocks = (target: Targets): Plugin => {
+  const plugiName = 'processTargetBlocks';
+
   const plugin = createCodeProcessorPlugin(
     (codeType, json, node) => (code, key) => {
       if (codeType === 'properties') {
@@ -80,5 +83,5 @@ export const processTargetBlocks = (target: Targets): Plugin => {
     { processProperties: true },
   );
 
-  return () => ({ json: { pre: plugin } });
+  return () => ({ json: { pre: plugin }, priority: PLUGIN_SORT_ORDER[plugiName] });
 };

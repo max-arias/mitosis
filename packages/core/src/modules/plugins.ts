@@ -1,3 +1,4 @@
+import { sortPlugins } from '../helpers/plugins/sort-plugins';
 import { MitosisComponent } from '../types/mitosis-component';
 import { Plugin } from '../types/plugins';
 
@@ -13,7 +14,8 @@ export const runPreJsonPlugins = ({
   options?: any;
 }) => {
   let useJson = json;
-  for (const plugin of plugins) {
+  const sortedPlugins = sortPlugins(plugins);
+  for (const plugin of sortedPlugins) {
     const preFunction = plugin(options).json?.pre;
     if (preFunction) {
       useJson = preFunction(json) || json;
@@ -32,7 +34,8 @@ export const runPostJsonPlugins = ({
   options?: any;
 }) => {
   let useJson = json;
-  for (const plugin of plugins) {
+  const sortedPlugins = sortPlugins(plugins);
+  for (const plugin of sortedPlugins) {
     const postFunction = plugin(options).json?.post;
     if (postFunction) {
       useJson = postFunction(json) || json;
@@ -53,7 +56,8 @@ export const runPreCodePlugins = ({
   options?: any;
 }) => {
   let string = code;
-  for (const plugin of plugins) {
+  const sortedPlugins = sortPlugins(plugins);
+  for (const plugin of sortedPlugins) {
     const preFunction = plugin(options).code?.pre;
     if (preFunction) {
       string = preFunction(string, json);
@@ -74,7 +78,8 @@ export const runPostCodePlugins = ({
   options?: any;
 }) => {
   let string = code;
-  for (const plugin of plugins) {
+  const sortedPlugins = sortPlugins(plugins);
+  for (const plugin of sortedPlugins) {
     const postFunction = plugin(options).code?.post;
     if (postFunction) {
       string = postFunction(string, json);

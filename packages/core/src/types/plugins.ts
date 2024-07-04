@@ -13,4 +13,6 @@ export type Plugin = (options?: any) => {
     // Happens after formatting
     post?: (code: string, json: MitosisComponent) => string;
   };
+  // The order in which this plugin should be executed. If this is not set, it will default to Infinity.
+  priority?: number;
 };

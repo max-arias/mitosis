@@ -1,5 +1,6 @@
 import { Node, types } from '@babel/core';
 import generate from '@babel/generator';
+import { PLUGIN_SORT_ORDER } from '../../constants/plugin-sort-order';
 import { Target } from '../../types/config';
 import { Plugin } from '../../types/plugins';
 import { babelTransformExpression } from '../babel-transform';
@@ -105,6 +106,7 @@ export const getSignalTypePlugin =
         }
       },
     },
+    priority: PLUGIN_SORT_ORDER['getSignalTypePlugin']
   });
 
 const getSignalMapperForTarget = (target: Target): SignalMapper => {
@@ -235,4 +237,5 @@ export const getSignalAccessPlugin =
         })(x);
       },
     },
+    priority: PLUGIN_SORT_ORDER['getSignalAccessPlugin']
   });
