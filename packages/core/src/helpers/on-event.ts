@@ -1,4 +1,5 @@
 import { MitosisComponent, MitosisNode, OnEventHook, Plugin } from '..';
+import { PLUGIN_SORT_ORDER } from '../constants/plugin-sort-order';
 import { capitalize } from './capitalize';
 import { traverseNodes } from './traverse-nodes';
 
@@ -56,4 +57,5 @@ export const processOnEventHooksPlugin =
         });
       },
     },
+    priority: PLUGIN_SORT_ORDER['processOnEventHooksPlugin']
   });

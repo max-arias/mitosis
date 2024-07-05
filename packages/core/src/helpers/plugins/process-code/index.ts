@@ -1,4 +1,5 @@
 import { flow } from 'fp-ts/lib/function';
+import { PLUGIN_SORT_ORDER } from '../../../constants/plugin-sort-order';
 import { BaseHook, MitosisComponent } from '../../../types/mitosis-component';
 import { Plugin } from '../../../types/plugins';
 import { checkIsDefined } from '../../nullable';
@@ -169,5 +170,5 @@ export const createCodeProcessorPlugin =
 export const CODE_PROCESSOR_PLUGIN = flow(
   createCodeProcessorPlugin,
   (plugin): Plugin =>
-    () => ({ json: { post: plugin } }),
+    () => ({ json: { post: plugin }, priority:PLUGIN_SORT_ORDER['codeProcessor']  }),
 );

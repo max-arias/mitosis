@@ -1,5 +1,6 @@
 import { mapValues } from 'lodash';
 import traverse, { TraverseContext } from 'traverse';
+import { PLUGIN_SORT_ORDER } from '../constants/plugin-sort-order';
 import { isMitosisNode } from '../helpers/is-mitosis-node';
 import { MitosisComponent } from '../types/mitosis-component';
 import { MitosisNode } from '../types/mitosis-node';
@@ -50,4 +51,5 @@ export const compileAwayComponents =
         });
       },
     },
+    priority: PLUGIN_SORT_ORDER['compileAwayComponents']
   });

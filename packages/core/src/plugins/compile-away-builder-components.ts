@@ -3,6 +3,7 @@ import { Builder, BuilderElement } from '@builder.io/sdk';
 import json5 from 'json5';
 import { omit, pick, round } from 'lodash';
 import traverse, { TraverseContext } from 'traverse';
+import { PLUGIN_SORT_ORDER } from '../constants/plugin-sort-order';
 import { createSingleBinding } from '../helpers/bindings';
 import { createMitosisNode } from '../helpers/create-mitosis-node';
 import { filterEmptyTextNodes } from '../helpers/filter-empty-text-nodes';
@@ -597,6 +598,7 @@ export const compileAwayBuilderComponents = (
         compileAwayBuilderComponentsFromTree(json, obj);
       },
     },
+    priority: PLUGIN_SORT_ORDER['compileAwayBuilderComponents']
   });
 };
 

@@ -26,7 +26,6 @@ const getBlockForTarget = ({
  * Processes `useTarget()` blocks for a given target.
  */
 export const processTargetBlocks = (target: Targets): Plugin => {
-  const plugiName = 'processTargetBlocks';
 
   const plugin = createCodeProcessorPlugin(
     (codeType, json, node) => (code, key) => {
@@ -83,5 +82,5 @@ export const processTargetBlocks = (target: Targets): Plugin => {
     { processProperties: true },
   );
 
-  return () => ({ json: { pre: plugin }, priority: PLUGIN_SORT_ORDER[plugiName] });
+  return () => ({ json: { pre: plugin }, priority: PLUGIN_SORT_ORDER['processTargetBlocks'] });
 };

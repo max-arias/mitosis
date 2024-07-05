@@ -1,4 +1,5 @@
 import { TraverseContext } from 'traverse';
+import { PLUGIN_SORT_ORDER } from '../constants/plugin-sort-order';
 import { getStyles, setStyles } from '../helpers/get-styles';
 import { traverseNodes } from '../helpers/traverse-nodes';
 import { MitosisComponent } from '../types/mitosis-component';
@@ -17,4 +18,5 @@ export const mapStyles = (pluginOptions: MapStylesOptions) => (options: any) => 
       });
     },
   },
+  priority: PLUGIN_SORT_ORDER['mapStyles']
 });
